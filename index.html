@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="أركان للأثاث - أفضل غرف نوم مودرن وكلاسيك في الرياض. جودة عالية، خشب وطني، توصيل وتركيب فوري.">
+    <meta name="keywords" content="اثاث الرياض, غرف نوم, كنب, اركان للاثاث, تفصيل غرف نوم, سوق الاثاث, منجرة الرياض">
+    <meta name="theme-color" content="#0F172A">
+    
+    <title>أركان للأثاث | Arkan Furniture</title>
+    
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛋️</text></svg>">
+
+    <!-- خط تجوال العربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- إعدادات التصميم والألوان --- */
+        :root {
+            --primary: #0F172A;     /* كحلي ملكي */
+            --accent: #C5A059;      /* ذهبي */
+            --bg: #F8F9FA;          /* خلفية فاتحة */
+            --surface: #FFFFFF;     /* أبيض */
+            --text-main: #1E293B;
+            --text-sub: #64748B;
+            --whatsapp: #25D366;    /* واتساب */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 80px; /* مساحة للشريط السفلي */
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* --- الهيدر --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span { color: var(--accent); }
+
+        .menu-btn {
+            font-size: 1.6rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+            display: none;
+        }
+
+        .desktop-nav { display: flex; gap: 30px; }
+        .desktop-nav a { font-weight: 600; font-size: 1.1rem; }
+        .desktop-nav a:hover { color: var(--accent); }
+
+        /* --- القائمة الجانبية (Mobile Drawer) --- */
+        .mobile-nav {
+            position: fixed;
+            top: 0; right: -100%; width: 85%; height: 100vh;
+            background: var(--surface); z-index: 1002; padding: 25px;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        .mobile-nav.active { right: 0; }
+        
+        .nav-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;
+        }
+
+        .close-btn { font-size: 1.8rem; color: #ff4757; cursor: pointer; }
+        
+        .mobile-link {
+            font-size: 1.2rem; font-weight: 700; color: var(--primary);
+            padding: 12px; border-radius: 10px; display: flex; align-items: center; gap: 15px;
+        }
+        .mobile-link:active { background-color: #f1f5f9; }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 1001; display: none; backdrop-filter: blur(2px);
+        }
+        .overlay.active { display: block; }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative; height: 90vh; min-height: 500px;
+            background: linear-gradient(180deg, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=2600&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 20px; margin-top: 60px;
+        }
+
+        .hero-content { max-width: 600px; animation: fadeUp 0.8s ease-out; }
+        .hero h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 15px; font-weight: 800; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px; }
+        .hero-badge {
+            background: var(--accent); color: var(--primary); padding: 6px 18px;
+            border-radius: 50px; font-weight: bold; font-size: 0.9rem;
+            display: inline-block; margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+        }
+
+        /* --- شريط المميزات --- */
+        .features-strip {
+            background: var(--surface); padding: 25px 15px;
+            display: flex; justify-content: space-around; text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); margin: -40px 5% 40px 5%;
+            border-radius: 20px; position: relative; z-index: 10;
+        }
+
+        .feature-item i { font-size: 1.8rem; color: var(--accent); margin-bottom: 8px; }
+        .feature-item span { display: block; font-size: 0.9rem; font-weight: 700; color: var(--primary); }
+
+        /* --- المنتجات --- */
+        .products-section { padding: 20px 0; }
+        .section-header {
+            padding: 0 20px; margin-bottom: 25px; display: flex;
+            justify-content: space-between; align-items: flex-end;
+        }
+        .section-header h2 { font-size: 1.8rem; color: var(--primary); border-right: 5px solid var(--accent); padding-right: 15px; }
+        .swipe-hint { font-size: 0.8rem; color: var(--text-sub); animation: shake 2s infinite; }
+
+        .scrolling-wrapper {
+            display: flex; overflow-x: auto; padding: 10px 20px 50px; gap: 20px;
+            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        }
+        .scrolling-wrapper::-webkit-scrollbar { display: none; }
+
+        .product-card {
+            flex: 0 0 85%; max-width: 350px; background: var(--surface);
+            border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            scroll-snap-align: center; transition: transform 0.3s;
+            display: flex; flex-direction: column;
+        }
+
+        .prod-img {
+            height: 240px; background-size: cover; background-position: center; position: relative;
+        }
+        .discount-tag {
+            position: absolute; top: 15px; right: 15px; background: #ff4757; color: white;
+            padding: 5px 12px; border-radius: 50px; font-weight: bold; font-size: 0.8rem;
+        }
+
+        .prod-details { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .prod-title { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-bottom: 5px; }
+        .prod-desc { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 15px; }
+
+        .order-btn {
+            display: flex; justify-content: center; align-items: center; width: 100%;
+            background: var(--primary); color: white; padding: 14px; border-radius: 12px;
+            font-weight: bold; gap: 10px; transition: 0.2s; margin-top: auto;
+        }
+        .order-btn:active { transform: scale(0.98); background: #1e293b; }
+
+        /* --- قسم الثقة --- */
+        .trust-section {
+            background: #e2e8f0; margin: 20px; padding: 30px;
+            border-radius: 20px; text-align: center;
+        }
+        .trust-section h3 { color: var(--primary); margin-bottom: 10px; }
+        .trust-section p { color: var(--text-sub); line-height: 1.6; }
+
+        /* --- الفوتر --- */
+        footer { text-align: center; padding: 20px; color: var(--text-sub); font-size: 0.9rem; margin-bottom: 20px; }
+
+        /* --- الشريط السفلي الثابت --- */
+        .sticky-bottom-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 12px 15px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 9999;
+            display: flex; gap: 12px; padding-bottom: max(12px, env(safe-area-inset-bottom)); 
+        }
+
+        .action-btn {
+            flex: 1; padding: 14px; border-radius: 50px; display: flex;
+            align-items: center; justify-content: center; gap: 8px;
+            font-weight: 800; font-size: 1rem; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-whatsapp { background: var(--whatsapp); color: white; }
+        .btn-call { background: var(--primary); color: white; }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .desktop-nav { display: none; }
+            .menu-btn { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+        @media (min-width: 769px) {
+            .mobile-nav, .menu-btn, .sticky-bottom-bar { display: none; }
+            body { padding-bottom: 0; }
+            .scrolling-wrapper { flex-wrap: wrap; justify-content: center; overflow: visible; }
+            .product-card { flex: 0 0 320px; margin-bottom: 30px; }
+            .hero { height: 80vh; }
+        }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-5px); } }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-couch"></i> أركان <span>Arkan</span>
+        </div>
+        
+        <nav class="desktop-nav">
+            <a href="#home">الرئيسية</a>
+            <a href="#products">العروض</a>
+            <a href="#features">الضمان</a>
+        </nav>
+
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- القائمة الجانبية -->
+    <div class="overlay" onclick="toggleMenu()" id="overlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="nav-header">
+            <div class="logo"><i class="fas fa-couch"></i> أركان</div>
+            <div class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
+        </div>
+        <a href="#home" class="mobile-link" onclick="toggleMenu()"><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="#products" class="mobile-link" onclick="toggleMenu()"><i class="fas fa-tags"></i> أحدث العروض</a>
+        <a href="#features" class="mobile-link" onclick="toggleMenu()"><i class="fas fa-medal"></i> الضمان والجودة</a>
+        
+        <a href="https://wa.me/966506630541" class="mobile-link" style="background: #eefcf3; color: var(--whatsapp); margin-top: auto;">
+            <i class="fab fa-whatsapp"></i> تواصل واتساب
+        </a>
+    </div>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">الرياض 🔥</div>
+            <h1>جدد أركان بيتك <br><span style="color: var(--accent);">بلمسة فخامة</span></h1>
+            <p>غرف نوم مودرن، جودة خشب تعيش العمر، وتوصيل سريع لباب بيتك.</p>
+        </div>
+    </section>
+
+    <!-- المميزات -->
+    <div class="features-strip" id="features">
+        <div class="feature-item">
+            <i class="fas fa-truck"></i>
+            <span>توصيل وتركيب</span>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>جودة</span>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-wallet"></i>
+            <span>دفع عند الاستلام</span>
+        </div>
+    </div>
+
+    <!-- المنتجات -->
+    <section class="products-section" id="products">
+        <div class="section-header">
+            <h2>عروض حصرية</h2>
+            <span class="swipe-hint">اسحب لليسار <i class="fas fa-arrow-left"></i></span>
+        </div>
+
+<div class="scrolling-wrapper">
+
+             <!-- المنتج 3: الغرفة البيج (كلاسيك تاتش) -->
+             <div class="product-card">
+                <!-- ضع اسم الصورة الحقيقي هنا بدلاً من img3.jpg -->
+                <div class="prod-img" style="background-image: url('pic/3.jpg');">
+                    <span class="discount-tag">الأكثر راحة ❤️</span>
+                </div>
+                <div class="prod-details">
+                    <div>
+                        <div class="prod-title">غرفة "سُكون" البيج</div>
+                        <div class="prod-desc">
+                            لمحبي الهدوء. لون كريمي يريح الأعصاب، رأس سرير منجد (كابوتنيه) بالكامل، 
+                            ودولاب بمرايا طولية تعطي اتساع للغرفة.
+                        </div>
+                    </div>
+                    <a href="https://wa.me/966506630541?text=ممكن%20تفاصيل%20وسعر%20غرفة%20سكون%20البيج؟" class="order-btn">
+                        استفسر عن السعر <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- المنتج 2: الغرفة الرمادية (مودرن سترايب) -->
+            <div class="product-card">
+                <!-- ضع اسم الصورة الحقيقي هنا بدلاً من img2.jpg -->
+                <div class="prod-img" style="background-image: url('pic/2.jpg');">
+                    <span class="discount-tag">موضة 2026 🔥</span>
+                </div>
+                <div class="prod-details">
+                    <div>
+                        <div class="prod-title">غرفة "مودرن سترايب"</div>
+                        <div class="prod-desc">
+                            اللون الرمادي اللي ما يقدم! تصميم عصري بخطوط طولية محفورة، 
+                            خشب وطني متين، مقابض ذهبية، وسرير بتنجيد مخملي فخم.
+                        </div>
+                    </div>
+                    <a href="https://wa.me/966506630541?text=ممكن%20تفاصيل%20وسعر%20غرفة%20مودرن%20سترايب%20الرمادية؟" class="order-btn">
+                        استفسر عن السعر <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+    <!-- المنتج 1: الغرفة البيضاء (وايت جولد) -->
+            <div class="product-card">
+                <!-- ضع اسم الصورة الحقيقي هنا بدلاً من img1.jpg -->
+                <div class="prod-img" style="background-image: url('pic/1.jpg');">
+                    <span class="discount-tag">الأكثر فخامة ✨</span>
+                </div>
+                <div class="prod-details">
+                    <div>
+                        <div class="prod-title">غرفة "وايت جولد" الملكية</div>
+                        <div class="prod-desc">
+                            لون أبيض لؤلؤي يشرح الصدر مع تطعيمات ذهبية فاخرة. 
+                            سرير منجد مريح، تسريحة بمرايا دائرية ترند، ودولاب واسع بتقسيم عملي.
+                        </div>
+                    </div>
+                    <a href="https://wa.me/966506630541?text=ممكن%20تفاصيل%20وسعر%20غرفة%20وايت%20جولد؟" class="order-btn">
+                        استفسر عن السعر <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- كرت التواصل للتفصيل -->
+             <div class="product-card" style="background: var(--primary); color: white;">
+                <div class="prod-details" style="justify-content: center; text-align: center;">
+                    <i class="fas fa-layer-group" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <div class="prod-title" style="color: white;">عندك موديل في بالك؟</div>
+                    <div class="prod-desc" style="color: #cbd5e1;">
+                        إحنا ننفذ أي تصميم بخشب وطني أصلي وجودة تبيض الوجه. أرسل لنا الصورة وبشر بالسعد.
+                    </div>
+
+                    <a href="https://wa.me/966506630541?text=عندي%20صورة%20غرفة%20ابغى%20افصل%20مثلها" class="order-btn" style="background: var(--accent); color: var(--primary);">
+                        أرسل تصميمك الآن <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- الثقة -->
+    <div class="trust-section">
+        <h3><i class="fas fa-handshake"></i> ليش تختار أركان؟</h3>
+        <p>لأننا في السوق من زمان، ونعرف طلبك. خشبنا نختاره بالقطعة، والتفصيل تحت عينك، والسعر يرضيك.</p>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة © <span id="year"></span> أركان للأثاث</p>
+        <p>الرياض - المملكة العربية السعودية</p>
+    </footer>
+
+    <!-- الشريط السفلي -->
+    <div class="sticky-bottom-bar">
+        <a href="tel:966506630541" class="action-btn btn-call">
+            <i class="fas fa-phone-alt"></i> اتصال
+        </a>
+        <a href="https://wa.me/966506630541" class="action-btn btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> واتساب
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function toggleMenu() {
+            const nav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+            } else {
+                nav.classList.add('active');
+                overlay.classList.add('active');
+            }
+        }
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if(document.getElementById('mobileNav').classList.contains('active')) toggleMenu();
+            });
+        });
+    </script>
+
+</body>
+</html>
